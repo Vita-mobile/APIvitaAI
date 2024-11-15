@@ -6,10 +6,17 @@ import json
 
 firebase_credentials = os.getenv('FIREBASE_CREDENTIALS')
 
+print("VARIABLE DE ENTORNO PARA FIREBASE", firebase_credentials )
+
+print("TYPE:", type(firebase_credentials) )
+
 if not firebase_credentials:
     raise ValueError("Enviroment variable FIREBASE_CREDENTIALS is not set.")
 
 credentials_json = json.loads(firebase_credentials)
+
+
+print("Despues del json:", credentials_json)
 
 cred = credentials.Certificate(credentials_json)    
 
