@@ -1,4 +1,5 @@
 config/firebase_key.json
 .env
 __pycache__/
+run.sh
 

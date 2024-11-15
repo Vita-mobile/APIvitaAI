@@ -1,11 +1,9 @@
 import os
 import requests
 import json
-from dotenv import load_dotenv
-
-load_dotenv()
 
 GEMINI_API_KEY = os.getenv("API_KEY")
+
 
 def generate_recipe(physical_target, ingredient_string, calorie_limit, carbs, fats, protein, meals):
     endpoint_url = f"https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash-latest:generateContent?key={GEMINI_API_KEY}"
