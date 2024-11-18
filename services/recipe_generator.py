@@ -18,8 +18,8 @@ def generate_recipe(physical_target, ingredient_string, calorie_limit, carbs, fa
     for i in range(1, total_meals + 1):
         meal_sections += (
             f"  {{\n"
-            f'    "name": "Título de la receta {i}",\n'
-            f'    "ingredients": [\n'
+            f'    "name": "Título de la receta ",\n'
+            f'    "ingredientMeals": [\n'
             f'      {{"id": "ID del ingrediente 1", "name": "Nombre del ingrediente 1", "grams": Cantidad en gramos}},\n'
             f'      {{"id": "ID del ingrediente 2", "name": "Nombre del ingrediente 2", "grams": Cantidad en gramos}},\n'
             f'      ...\n'
@@ -28,7 +28,7 @@ def generate_recipe(physical_target, ingredient_string, calorie_limit, carbs, fa
             f'    "carbs": Gramos totales de carbohidratos,\n'
             f'    "fats": Gramos totales de grasas,\n'
             f'    "proteins": Gramos totales de proteínas,\n'
-            f'    "description": "Instrucciones para preparar la receta {i}."\n'
+            f'    "description": "Instrucciones para preparar la receta {i}."\n'    
             f"  }},\n"
         )
 
@@ -66,7 +66,7 @@ def generate_recipe(physical_target, ingredient_string, calorie_limit, carbs, fa
     if response.status_code == 200:
         result = response.json()
         try:
-            raw_json_text = result['candidates'][0]['content']['parts'][0]['text']
+            raw_json_text = result['candidates'][0]['content']['parts'][0]['text'][7:][:-4]
             
             recipes_list = json.loads(raw_json_text)
             

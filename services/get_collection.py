@@ -1,28 +1,10 @@
-import firebase_admin
-from firebase_admin import credentials, firestore
+from services.firebase_config import get_db
 import os
 import json
 
 
-firebase_credentials = os.getenv('FIREBASE_CREDENTIALS')
 
-print("VARIABLE DE ENTORNO PARA FIREBASE", firebase_credentials )
-
-print("TYPE:", type(firebase_credentials) )
-
-if not firebase_credentials:
-    raise ValueError("Enviroment variable FIREBASE_CREDENTIALS is not set.")
-
-credentials_json = json.loads(firebase_credentials)
-
-
-print("Despues del json:", credentials_json)
-
-cred = credentials.Certificate(credentials_json)    
-
-firebase_admin.initialize_app(cred)
-
-db = firestore.client()
+db = get_db()
 
 def get_collection(collection_name):
     ingredients = list()

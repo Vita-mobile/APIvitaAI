@@ -1,3 +1,4 @@
 from .get_collection import get_collection, get_available_and_restrictive_ingredients
 from .ingredient_filter import generate_ingredient_string
 from .recipe_generator import generate_recipe
+import firebase_admin
